@@ -1,23 +1,15 @@
 import {Router} from 'express'
 import {Request,Response} from 'express'
+import * as apiController from '../controllers/apiController' // irei consumir as api dessa importação
 //criação de enpoints da api
 
 const router = Router()
 //estrura da api ping pong para teste ver se esta tudo ok
-router.get('/ping',(req:Request,res:Response)=>{
-    res.json({pong:true,})
-})
 
-router.get('/random',(req:Request,res:Response)=>{
-    let n:number =Math.floor(Math.random()* 10+1)
-    res.json({numero:n})
-})
+router.get('/ping', apiController.ping)//esse nome em amarelo e a função que estou utilizando no meu controller
+router.get('/random',apiController.random)
 
-router.get('/nome/:nome',(req:Request,res:Response)=>{
-    let nome:string = req.params.nome
-    res.json({nome})
-
-})
+router.get('/nome/:nome', apiController.nome)// /:para pegar o parametro passado na url
 
 
 export default router;
