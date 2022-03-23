@@ -19,4 +19,5 @@ router.get('/nome/:nome',(req:Request,res:Response)=>{
 
 })
 
+
 export default router;
