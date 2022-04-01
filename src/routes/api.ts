@@ -8,8 +8,13 @@ const router = Router()
 
 router.get('/ping', apiController.ping)//esse nome em amarelo e a função que estou utilizando no meu controller
 router.get('/random',apiController.random)
-
 router.get('/nome/:nome', apiController.nome)// /:para pegar o parametro passado na url
+router.post('/frases', apiController.createFrases)
+router.get('/frases',apiController.listFrases)
+router.get('/frases/:id', apiController.oneFrase)//:parametro da url
+router.put('/frase/:id', apiController.updateFrase)
+router.delete('/frase/:id',apiController.deleteFrase)
+router.get('/frasealeatoria/:id', apiController.getFrase)
 
 
 export default router;
