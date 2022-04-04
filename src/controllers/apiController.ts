@@ -1,6 +1,7 @@
 import {Request, Response} from 'express'
 import{Phrase} from '../models/Phrases'
 import {Sequelize} from 'sequelize'
+import sequelize from 'sequelize'
 
 export const ping =(req:Request, res:Response)=>{
     res.json({pong:true})//retorno que vira no meu json
@@ -67,8 +68,17 @@ export const listFrases = async(req:Request, res:Response)=>{
  }
 
  export const getFrase = async(req:Request, res:Response)=>{
-     let {id}= req.params
-     let frase = await Phrase.findByPk(id)
+     let frase = await Phrase.findOne({
+         order:[
+             sequelize.fn("RAND")
+         ]
+     })
+
+    if(frase){
+        res.json({frase})
+    }else{
+        res.json({error:'Não há frases cadastradas !'})
+    }
 
  }
 

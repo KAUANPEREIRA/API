@@ -11,10 +11,11 @@ router.get('/random',apiController.random)
 router.get('/nome/:nome', apiController.nome)// /:para pegar o parametro passado na url
 router.post('/frases', apiController.createFrases)
 router.get('/frases',apiController.listFrases)
+router.get('/frase/aleatora', apiController.getFrase)
 router.get('/frases/:id', apiController.oneFrase)//:parametro da url
 router.put('/frase/:id', apiController.updateFrase)
-router.delete('/frase/:id',apiController.deleteFrase)
-router.get('/frasealeatoria/:id', apiController.getFrase)
+router.delete('/frase/:id',apiController.deleteFrase)//: dado dinamico
+
 
 
 export default router;
